@@ -158,5 +158,51 @@ public class UsuarioApiTests {
 					;
 		
 	}
+	
+	@Test
+	void buscarUsuarioOrdenado() throws Exception {
+		Usuario usuario = new Usuario();
+		usuario.setName("Miguel Rodriguez");
+		usuario.setEmail("mikyl@rodriguez.cl");
+		usuario.setPassword("Hunter22");
+		Telefono telefono = new Telefono();
+		telefono.setNumber((long) 1234567);
+		telefono.setCitycode(1);
+		telefono.setContrycode(57);
+		usuario.setPhones(Arrays.asList(telefono));
+		repo.saveAndFlush(usuario);
+			
+		Usuario usuario2 = new Usuario();
+		usuario2.setName("Sean Rodriguez");
+		usuario2.setEmail("sean@rodriguez.cl");
+		usuario2.setPassword("Hunter22");
+		Telefono telefono2 = new Telefono();
+		telefono2.setNumber((long) 1234567);
+		telefono2.setCitycode(1);
+		telefono2.setContrycode(57);
+		usuario2.setPhones(Arrays.asList(telefono2));
+		repo.saveAndFlush(usuario2);
+		
+		Usuario usuario3 = new Usuario();
+		usuario3.setName("Diego Rodriguez");
+		usuario3.setEmail("diego@rodriguez.cl");
+		usuario3.setPassword("Hunter22");
+		Telefono telefono3 = new Telefono();
+		telefono3.setNumber((long) 1234567);
+		telefono3.setCitycode(1);
+		telefono3.setContrycode(57);
+		usuario3.setPhones(Arrays.asList(telefono3));
+		repo.saveAndFlush(usuario3);
+
+		mockMvc.perform(get("/usuario")
+					.accept(MediaType.APPLICATION_JSON))
+					.andExpect(status().isOk())
+					.andExpect(jsonPath("$.[0].name").value("Diego Rodriguez"))
+					.andExpect(jsonPath("$.[1].name").value("Sean Rodriguez"))
+					.andExpect(jsonPath("$.[2].name").value("Miguel Rodriguez"))
+					;
+		
+	}
+	
 
 }
