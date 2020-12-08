@@ -1,4 +1,4 @@
-# itHunt_LFV
+# itTalent_LFV
 _Evaluación JAVA IT-Hunt (GlobalLogic)_
 
 ### Pre-requisitos 📋
@@ -10,19 +10,19 @@ _Evaluación JAVA IT-Hunt (GlobalLogic)_
 
 _Clonar el proyecto utilizando git_
 ```
-git clone https://github.com/lfuentesv/itHunt_LFV.git
+git clone https://github.com/lfuentesv/itTalent_LFV.git
 ```
 
 ## Pruebas ⚙️
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV/glogic/) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalentLFV/glogic/) ejecutar el comando:_
 ```
 ./gradlew clean test
 ```
 
 ## Ejecución 📦
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV/glogic) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalentLFV/glogic) ejecutar el comando:_
 ```
 ./gradlew clean bootrun
 ```
