@@ -31,9 +31,9 @@ gradle clean bootrun
 _Utilicé las siguientes herramientas durante el desarrollo_
 
 * [Eclipse 2020-09](https://www.eclipse.org/) - IDE
-* [Spring Boot] (https://spring.io/projects/spring-boot#overview) 
+* [Spring Boot](https://spring.io/projects/spring-boot#overview) 
 * [Gradle](https://gradle.org/) - Manejador de dependencias
 * [Dozer](http://dozer.sourceforge.net/documentation/about.html) - Mapeador de objetos
-* [Git Flow] - Metodología para organizar repositorio git
+* [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) - Metodología para organizar repositorio git
 
 
