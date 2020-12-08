@@ -30,10 +30,10 @@ gradle clean bootrun
 ### Uso ⌨️
 
 #### Registrar Usuario
- * Post
- * localhost:8080
- * Body
- ```
+ * Método http: Post
+ * URL: localhost:8080/usuario
+ * Body:
+```
 {
     "name": "pedro Rodrigue",
     "email": "pedrft@rodrigue.cl",
@@ -45,7 +45,22 @@ gradle clean bootrun
                 }]
 }
 ```
+ * Notas: 
+ ** El email debe tener mínimo 1 caracter y maxímo 7, debe ser ".cl".
+ ** El password debe empezar con UNA mayúscula,seguido de letras minúsculas y terminar en DOS números.
 
+#### Buscar Usuario por Id
+ * Método http: Get
+ * URL: localhost:8080/usuario/{id}
+ * Notas: 
+ ** {id} corresponde al id del usuario, por ejemplo: 767b21a4-c76c-4dcd-9792-1e2f8962db65, este se obtiene dentro de la respuesta del registro del usuario.
+
+#### Buscar todos los usuario
+
+ * Método http: Get
+ * URL: localhost:8080/usuario
+ * Notas: 
+ ** Retorna un listado con todos los usuarios registrados, ordenados por fecha de registro de forma descendente.
 
 ## Construido con 🛠️
 
