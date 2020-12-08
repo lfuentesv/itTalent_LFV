@@ -86,5 +86,24 @@ public class UsuarioApiTests {
 				   .andExpect(status().isBadRequest());
 
 	}
+	
+	@Test
+	void contrasenaIncorrecta() throws Exception {
+		RegistroRequest usuario = new RegistroRequest();
+		usuario.setName("joel Rodriguez");
+		usuario.setEmail("joel@rodriguez.cl");
+		usuario.setPassword("Hunter2");
+		Telefono telefono = new Telefono();
+		telefono.setNumber((long) 1234567);
+		telefono.setCitycode(1);
+		telefono.setContrycode(57);
+		usuario.setPhones(Arrays.asList(telefono));
+		
+		mockMvc.perform(post("/usuario")
+				   .contentType("application/json")
+				   .content(objectMapper.writeValueAsString(usuario)))
+				   .andExpect(jsonPath("$.errores[0].mensaje").value("La contraseña debe cumplir con el formato: Una mayúscula, letras minúsculas y dos números"))
+				   .andExpect(status().isBadRequest());
 
+	}
 }
