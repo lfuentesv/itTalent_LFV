@@ -1,5 +1,5 @@
 # itTalent_LFV
-_Evaluación JAVA IT-Hunt (GlobalLogic)_
+_Evaluación JAVA IT-Talent (GlobalLogic)_
 
 ### Pre-requisitos 📋
 
