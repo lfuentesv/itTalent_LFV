@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 @Entity
 public class Usuario {
@@ -37,7 +39,6 @@ public class Usuario {
 	}
 
 	public Usuario() {
-		this.id = UUID.randomUUID().toString();
 	}
 
 	public String getName() {
@@ -112,6 +113,17 @@ public class Usuario {
 		this.isactive = isactive;
 	}
 	
+	@PreUpdate
+	void modifiedAt() {
+	    this.modified = new Date();
+	}
 	
+	@PrePersist
+	void createdAt() {
+		this.id = UUID.randomUUID().toString();
+	    this.created = new Date();
+	    this.last_login = new Date();
+	    this.isactive = true;
+	}
 	
 }
