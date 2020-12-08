@@ -2,6 +2,7 @@ package com.lfuentes.glogic.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,9 +17,17 @@ public class Usuario {
 	private String name;
 	private String email;
 	private String password;
-	@OneToMany
-	private List<Telefono> telefonos;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Telefono> phones;
 	
+	public List<Telefono> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(List<Telefono> phones) {
+		this.phones = phones;
+	}
+
 	public Usuario() {
 	}
 
@@ -44,14 +53,6 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Telefono> getTelefonos() {
-		return telefonos;
-	}
-
-	public void setTelefonos(List<Telefono> telefonos) {
-		this.telefonos = telefonos;
 	}
 
 	public Long getId() {
