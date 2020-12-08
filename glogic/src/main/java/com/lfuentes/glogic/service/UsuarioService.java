@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.lfuentes.glogic.dao.UsuarioRepositorio;
 import com.lfuentes.glogic.dto.Usuario;
 import com.lfuentes.glogic.utils.TokenUtils;
+import com.lfuentes.glogic.validacion.EmailDuplicadoException;
 
 @Service
 public class UsuarioService {
@@ -18,7 +19,12 @@ public class UsuarioService {
 		private Logger logger = LoggerFactory.getLogger(UsuarioService.class);
 		
 		public Usuario registrar(Usuario usuario) {
-			logger.info("registra[INI] usuario.nombre: "+usuario.getName());
+			logger.info("registra[INI] usuario.email: "+usuario.getEmail());
+			
+			if (repo.existsUsuarioByEmail(usuario.getEmail())) {
+				logger.info("registra[FIN] email ya registrado en BD: "+usuario.getEmail());
+				throw new EmailDuplicadoException(usuario.getEmail());
+			}
 			
 			usuario.setToken(TokenUtils.getJWTToken(usuario.getName()));
 			
