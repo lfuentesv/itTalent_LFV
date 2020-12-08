@@ -31,7 +31,7 @@ public class UsuarioApi {
 	
 	@PostMapping("")
 	public ResponseEntity<RegistroResponse> registro(@Valid @RequestBody RegistroRequest usuarioRequest){
-		logger.info("registro[INI] Usuario.name: "+ usuarioRequest.getPhones().size());
+		logger.info("registro[INI] Usuario.name: "+ usuarioRequest.getName());
 		
 		Usuario usuario = mapper.map(usuarioRequest, Usuario.class);
 		logger.debug("registro[001] despues de mapear el request");
