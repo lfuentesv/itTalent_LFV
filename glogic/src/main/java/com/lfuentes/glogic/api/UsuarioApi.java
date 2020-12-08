@@ -1,5 +1,6 @@
 package com.lfuentes.glogic.api;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -58,5 +59,15 @@ public class UsuarioApi {
 		
 		logger.info("selectUsuarioId[FIN] usuario.id: "+ usuario.get().getId());
 		return ResponseEntity.ok(usuario);
-	} 
+	}
+	
+	@GetMapping("")
+	public ResponseEntity<List<Usuario>> selectUsuarios(){
+		logger.info("selectUsuarioId[INI]");
+		
+		List<Usuario> usuarios = servicio.buscarOrdenadosPorCreacion();
+		
+		logger.info("selectUsuarioId[FIN] usuarios: "+ usuarios.size());
+		return ResponseEntity.ok(usuarios);
+	}
 }
