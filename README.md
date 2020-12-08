@@ -72,4 +72,8 @@ _Utilicé las siguientes herramientas durante el desarrollo_
 * [Dozer](http://dozer.sourceforge.net/documentation/about.html) - Mapeador de objetos
 * [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) - Metodología para organizar repositorio git
 
+## Documentación 📖
+_En el directorio /diagramas se encuentran los siguientes diagramas:_
+ * Diagrama de secuencia "Registro"
+ * Diagrama de componentes
 
