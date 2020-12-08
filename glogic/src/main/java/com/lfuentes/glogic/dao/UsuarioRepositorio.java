@@ -6,4 +6,6 @@ import com.lfuentes.glogic.dto.Usuario;
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, String> {
 
+	boolean existsUsuarioByEmail(String email);
+
 }

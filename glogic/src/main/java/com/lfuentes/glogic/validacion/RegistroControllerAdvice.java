@@ -25,4 +25,13 @@ public class RegistroControllerAdvice {
 		}
 		return respuestaError;
 	}
+	
+	@ExceptionHandler(EmailDuplicadoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	ErrorResponse onEmailDuplicadoException(EmailDuplicadoException e) {
+		ErrorResponse error = new ErrorResponse();
+		error.getErrores().add(new Error(e.getMessage()));
+	  return error;
+	}
 }
