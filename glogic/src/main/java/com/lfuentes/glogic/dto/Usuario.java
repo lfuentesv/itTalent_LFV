@@ -1,10 +1,10 @@
 package com.lfuentes.glogic.dto;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -13,8 +13,7 @@ import javax.persistence.OneToMany;
 public class Usuario {
 	
 	@Id
-	@GeneratedValue
-	private Long id;
+	private String id;
 	private String name;
 	private String email;
 	private String password;
@@ -31,6 +30,7 @@ public class Usuario {
 	}
 
 	public Usuario() {
+		this.id = UUID.randomUUID().toString();
 	}
 
 	public String getName() {
@@ -57,12 +57,12 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
+	
 }
