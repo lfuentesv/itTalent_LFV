@@ -1,7 +1,6 @@
 package com.lfuentes.glogic.validacion;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,10 +18,8 @@ public class RegistroControllerAdvice {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	ErrorResponse onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-		ErrorResponse respuestaError = new ErrorResponse();
-		for (FieldError campo : e.getBindingResult().getFieldErrors()) {
-			respuestaError.getErrores().add(new Error(campo.getDefaultMessage()));
-		}
+		ErrorResponse respuestaError = new ErrorResponse();	
+		e.getBindingResult().getFieldErrors().forEach((campo) -> respuestaError.getErrores().add(new Error(campo.getDefaultMessage())));
 		return respuestaError;
 	}
 	
