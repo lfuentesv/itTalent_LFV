@@ -49,7 +49,7 @@ public class UsuarioApiTests {
 		mockMvc.perform(post("/usuario")
 			   .contentType("application/json")
 			   .content(objectMapper.writeValueAsString(usuario)))
-			   .andExpect(status().isOk())
+			   .andExpect(status().isCreated())
 			   .andExpect(jsonPath("$.id").isNotEmpty())
 			   .andExpect(jsonPath("$.created").isNotEmpty())
 			   .andExpect(jsonPath("$.modified").isEmpty())
@@ -77,7 +77,7 @@ public class UsuarioApiTests {
 		mockMvc.perform(post("/usuario")
 			   .contentType("application/json")
 			   .content(objectMapper.writeValueAsString(usuario)))
-			   .andExpect(status().isOk());
+			   .andExpect(status().isCreated());
 		
 		mockMvc.perform(post("/usuario")
 				   .contentType("application/json")
