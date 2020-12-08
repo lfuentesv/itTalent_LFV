@@ -49,9 +49,17 @@ public class UsuarioApiTests {
 		mockMvc.perform(post("/usuario")
 			   .contentType("application/json")
 			   .content(objectMapper.writeValueAsString(usuario)))
-			   .andExpect(status().isOk());
+			   .andExpect(status().isOk())
+			   .andExpect(jsonPath("$.id").isNotEmpty())
+			   .andExpect(jsonPath("$.created").isNotEmpty())
+			   .andExpect(jsonPath("$.modified").isEmpty())
+			   .andExpect(jsonPath("$.last_login").isNotEmpty())
+			   .andExpect(jsonPath("$.token").isNotEmpty())
+			   .andExpect(jsonPath("$.isactive").isNotEmpty())
+			   ;
 
 		assertThat(repo.existsUsuarioByEmail("juan@rodriguez.cl"));
+		
 	}
 	
 	@Test
