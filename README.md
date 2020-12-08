@@ -15,16 +15,16 @@ git clone https://github.com/lfuentesv/itHunt_LFV.git
 
 ## Pruebas ⚙️
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV/glogic/) ejecutar el comando:_
 ```
-gradle clean test
+./gradlew clean test
 ```
 
 ## Ejecución 📦
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itHuntLFV/glogic) ejecutar el comando:_
 ```
-gradle clean bootrun
+./gradlew clean bootrun
 ```
 
 ### Uso ⌨️
