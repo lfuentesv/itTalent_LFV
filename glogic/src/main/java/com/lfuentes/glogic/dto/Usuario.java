@@ -2,11 +2,21 @@ package com.lfuentes.glogic.dto;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Usuario {
 	
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String name;
 	private String email;
 	private String password;
+	@OneToMany
 	private List<Telefono> telefonos;
 	
 	public Usuario() {
@@ -42,6 +52,14 @@ public class Usuario {
 
 	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
