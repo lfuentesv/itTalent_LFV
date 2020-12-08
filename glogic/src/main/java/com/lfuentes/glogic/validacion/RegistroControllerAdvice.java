@@ -1,7 +1,8 @@
 package com.lfuentes.glogic.validacion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,23 +16,38 @@ import com.lfuentes.glogic.dto.ErrorResponse;
 @ControllerAdvice
 public class RegistroControllerAdvice {
 
+	private Logger logger = LoggerFactory.getLogger(RegistroControllerAdvice.class);
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
-	ErrorResponse onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-		ErrorResponse respuestaError = new ErrorResponse();
-		for (FieldError campo : e.getBindingResult().getFieldErrors()) {
-			respuestaError.getErrores().add(new Error(campo.getDefaultMessage()));
-		}
+	public ErrorResponse onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+		logger.info("onMethodArgumentNotValidException[INI] e.errorCount: "+ e.getErrorCount());
+		ErrorResponse respuestaError = new ErrorResponse();	
+		e.getBindingResult().getFieldErrors().forEach((campo) -> respuestaError.getErrores().add(new Error(campo.getDefaultMessage())));
+		logger.info("onMethodArgumentNotValidException[FIN] respuestaError: "+ respuestaError.getErrores().size());
 		return respuestaError;
 	}
 	
 	@ExceptionHandler(EmailDuplicadoException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
-	ErrorResponse onEmailDuplicadoException(EmailDuplicadoException e) {
-		ErrorResponse error = new ErrorResponse();
-		error.getErrores().add(new Error(e.getMessage()));
-	  return error;
+	public ErrorResponse onEmailDuplicadoException(EmailDuplicadoException e) {
+		logger.info("onEmailDuplicadoException[INI] e.message: "+ e.getMessage());
+		ErrorResponse respuestaError = new ErrorResponse();
+		respuestaError.getErrores().add(new Error(e.getMessage()));
+		logger.info("onEmailDuplicadoException[FIN] respuestaError: "+ respuestaError.getErrores().size());
+	  return respuestaError;
+	}
+	
+	@ExceptionHandler(UsuarioNoEncontradoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public ErrorResponse onUsuarioNoEncontradoException(UsuarioNoEncontradoException e) {
+		logger.info("onUsuarioNoEncontradoException[INI] e.message: "+ e.getMessage());
+		ErrorResponse respuestaError = new ErrorResponse();
+		respuestaError.getErrores().add(new Error(e.getMessage()));
+		logger.info("onUsuarioNoEncontradoException[FIN] respuestaError: "+ respuestaError.getErrores().size());
+	  return respuestaError;
 	}
 }
