@@ -82,7 +82,7 @@ public class UsuarioApiTests {
 		mockMvc.perform(post("/usuario")
 				   .contentType("application/json")
 				   .content(objectMapper.writeValueAsString(usuario)))
-				   .andExpect(jsonPath("$.errores[0].mensaje").value("El correo informado ya esta registrado (pedro@rodriguez.cl)"))
+				   .andExpect(jsonPath("$.errores[0].mensaje").value("El correo ya registrado"))
 				   .andExpect(status().isBadRequest());
 
 	}
