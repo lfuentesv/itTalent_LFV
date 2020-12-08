@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "FK_USUARIO", nullable = false, updatable = false)
 	private List<Telefono> phones;
 	
 	public List<Telefono> getPhones() {
