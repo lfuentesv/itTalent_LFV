@@ -1,5 +1,7 @@
 package com.lfuentes.glogic.api;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.dozer.Mapper;
@@ -8,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,4 +49,14 @@ public class UsuarioApi {
 		logger.info("registro[FIN] respuesta.Id: "+ respuesta.getId());
 		return new ResponseEntity <>(respuesta,HttpStatus.CREATED );
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<Usuario>> selectUsuarioId(@PathVariable(value = "id") String id){
+		logger.info("selectUsuarioId[INI] id: "+ id);
+		
+		Optional<Usuario> usuario = servicio.buscar(id);
+		
+		logger.info("selectUsuarioId[FIN] usuario.id: "+ usuario.get().getId());
+		return ResponseEntity.ok(usuario);
+	} 
 }

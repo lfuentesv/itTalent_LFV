@@ -39,4 +39,15 @@ public class RegistroControllerAdvice {
 		logger.info("onEmailDuplicadoException[FIN] respuestaError: "+ respuestaError.getErrores().size());
 	  return respuestaError;
 	}
+	
+	@ExceptionHandler(UsuarioNoEncontradoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public ErrorResponse onUsuarioNoEncontradoException(UsuarioNoEncontradoException e) {
+		logger.info("onUsuarioNoEncontradoException[INI] e.message: "+ e.getMessage());
+		ErrorResponse respuestaError = new ErrorResponse();
+		respuestaError.getErrores().add(new Error(e.getMessage()));
+		logger.info("onUsuarioNoEncontradoException[FIN] respuestaError: "+ respuestaError.getErrores().size());
+	  return respuestaError;
+	}
 }
