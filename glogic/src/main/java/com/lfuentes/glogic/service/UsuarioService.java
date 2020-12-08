@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lfuentes.glogic.dao.UsuarioRepositorio;
 import com.lfuentes.glogic.dto.Usuario;
+import com.lfuentes.glogic.utils.TokenUtils;
 
 @Service
 public class UsuarioService {
@@ -18,6 +19,8 @@ public class UsuarioService {
 		
 		public Usuario registrar(Usuario usuario) {
 			logger.info("registra[INI] usuario.nombre: "+usuario.getName());
+			
+			usuario.setToken(TokenUtils.getJWTToken(usuario.getName()));
 			
 			Usuario usuarioSaved = repo.saveAndFlush(usuario);
 			

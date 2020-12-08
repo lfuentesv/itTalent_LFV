@@ -32,7 +32,7 @@ public class UsuarioApi {
 		
 		Usuario usuarioRegistrado = servicio.registrar(usuario);
 		
-		logger.info("registro[001] antes de mapear la respuesta");
+		logger.debug("registro[001] antes de mapear la respuesta");
 		RegistroResponse respuesta = mapper.map(usuarioRegistrado, RegistroResponse.class);
 		
 		logger.info("registro[FIN] respuesta.Id: "+ respuesta.getId());
