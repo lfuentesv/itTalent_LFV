@@ -15,14 +15,14 @@ git clone https://github.com/lfuentesv/itTalent_LFV.git
 
 ## Pruebas ⚙️
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalentLFV/glogic/) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalent_LFV/glogic/) ejecutar el comando:_
 ```
 ./gradlew clean test
 ```
 
 ## Ejecución 📦
 
-_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalentLFV/glogic) ejecutar el comando:_
+_En la raiz del directorio donde se realizó la descarga del proyecto (ej: /home/lfuentes/itTalent_LFV/glogic) ejecutar el comando:_
 ```
 ./gradlew clean bootrun
 ```
